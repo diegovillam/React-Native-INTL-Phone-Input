@@ -176,7 +176,8 @@ renderAction=()=>{
       flagStyle,
       phoneInputStyle,
       dialCodeTextStyle,
-      inputProps
+      inputProps,
+      onFocusToggle,
     } = this.props;
     return (
       <View style={{ ...styles.container, ...containerStyle }}>
@@ -189,6 +190,8 @@ renderAction=()=>{
         {this.renderModal()}
         <TextInput
           {...inputProps}
+          onFocus={() => onFocusToggle(true)}
+          onBlur={() => onFocusToggle(false)}
           style={[styles.phoneInputStyle, phoneInputStyle]}
           placeholder={this.props.placeholder || this.state.mask.replace(/9/g, '_')}
           autoCorrect={false}
